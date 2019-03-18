@@ -12,10 +12,9 @@ ENV PATH ${PATH}:${SBT_HOME}/bin
 ENV INSTALL_DIR /usr/local
 
 # Install sbt
-RUN apk add --no-cache bash wget && mkdir -p "$SBT_HOME" 
-RUN wget -qO - --no-check-certificate "$SBT_URL" | tar xz -C $INSTALL_DIR
-RUN echo -ne "- with sbt $SBT_VERSION\n" >> /root/.built
-
+RUN apk add --no-cache bash wget libstdc++ && mkdir -p "$SBT_HOME" && \ 
+    wget -qO - --no-check-certificate "$SBT_URL" | tar xz -C $INSTALL_DIR && \
+    echo -ne "- with sbt $SBT_VERSION\n" >> /root/.built
 
 # Install git
 RUN apk add --no-cache git openssh
