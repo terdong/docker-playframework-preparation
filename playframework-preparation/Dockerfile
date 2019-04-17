@@ -18,3 +18,6 @@ RUN apk add --no-cache bash wget libstdc++ && mkdir -p "$SBT_HOME" && \
 
 # Install git
 RUN apk add --no-cache git openssh
+
+# Run & Download packages sbt
+RUN sbt about
